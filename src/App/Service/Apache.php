@@ -4,18 +4,18 @@ namespace App\Service;
 
 class Apache
 {
-    const CMD_DUMP_VHOSTS = 'apachectl -t -D DUMP_VHOSTS';
+    const CMD_DUMP_VHOSTS  = 'apachectl -t -D DUMP_VHOSTS';
     const CMD_DUMP_MODULES = 'apachectl -t -D DUMP_MODULES';
     const CMD_DUMP_RUN_CFG = 'apachectl -t -D DUMP_RUN_CFG';
     const CMD_DUMP_VERSION = 'apachectl -v';
 
     const REGEX_IP_ADDR = '/((\d+)\.){3}(\d+)/';
-    const REGEX_PORT = '/port (\d+) namevhost/';
-    const REGEX_DOMAIN = '/port \d+ namevhost (.*) \(/';
+    const REGEX_PORT    = '/port (\d+) namevhost/';
+    const REGEX_DOMAIN  = '/port \d+ namevhost (.*) \(/';
     const REGEX_VERSION = '/Apache\/([\d\.]*)/';
 
     const DEFAULT_IP_ADDR = '127.0.0.1';
-    const DEFAULT_PORT = '80';
+    const DEFAULT_PORT    = '80';
 
     protected $rawVhosts;
     protected $rawModules;
@@ -134,7 +134,8 @@ class Apache
         $lines   = explode(PHP_EOL, $input);
         foreach ($lines as $line) {
             if (preg_match(self::REGEX_IP_ADDR, $line, $matches)) {
-                $ip = $matches[0]; continue;
+                $ip = $matches[0];
+                continue;
             }
 
             if (preg_match(self::REGEX_PORT, $line, $matches)) {
@@ -175,7 +176,6 @@ class Apache
         preg_match_all($pattern, $input, $results);
         $results = array_values(array_unique($results[$index]));
         return $results;
-
     }
 
     /**
@@ -191,5 +191,4 @@ class Apache
     {
         return shell_exec($command);
     }
-
 }
