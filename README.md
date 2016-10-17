@@ -16,8 +16,10 @@ The production instance of this Drupal site uses the following technologies:
 * `php -S localhost:8000 -t web/`
 
 ## Release History
+* (tag: 1.0.1)
+    * Added unit testing to the app.
 * (tag: 1.0.0)
-    * First tagged release of the site.
+    * First tagged release of the app.
 
 ## Authors
 | Author | Email |
