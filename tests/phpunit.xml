@@ -5,13 +5,11 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="../app/bootstrap.php.cache"
+         bootstrap="../app/app.php"
 >
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>../src/*/*Bundle/Tests</directory>
-            <directory>../src/*/Bundle/*Bundle/Tests</directory>
-            <directory>../src/*Bundle/Tests</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 
@@ -23,18 +21,13 @@
         <whitelist>
             <directory>../src</directory>
             <exclude>
-                <directory>../src/*Bundle/Resources</directory>
-                <directory>../src/*Bundle/Tests</directory>
-                <directory>../src/*/*Bundle/Resources</directory>
-                <directory>../src/*/*Bundle/Tests</directory>
-                <directory>../src/*/Bundle/*Bundle/Resources</directory>
-                <directory>../src/*/Bundle/*Bundle/Tests</directory>
+                <directory>../src/*</directory>
             </exclude>
         </whitelist>
     </filter>
 
 
-
+<!-- 
     <logging>
       <log type="coverage-html" target="./coverage" lowUpperBound="50"
            highLowerBound="85"/>
@@ -47,6 +40,6 @@
       <log type="junit" target="./logs/logfile.xml" logIncompleteSkipped="false"/>
       <log type="testdox-html" target="./logs/testdox.html"/>
       <log type="testdox-text" target="./logs/testdox.txt"/>
-    </logging>
+    </logging> -->
 
 </phpunit>
