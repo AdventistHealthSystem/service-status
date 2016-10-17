@@ -10,9 +10,8 @@ use App\Service\Apache as Apache;
  */
 class DefaultController
 {
-    public function indexAction(\Silex\Application $app)
+    public function indexAction(\Silex\Application $app, Apache $service)
     {
-        $service = new Apache;
         $response = [
             'version' => $service->getVersion(),
             'ips'     => $service->getIps(),

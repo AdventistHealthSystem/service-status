@@ -233,4 +233,70 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * @dataProvider provideParseRawVhosts
+     */
+    public function testParseRawVhosts($expected, $input = '')
+    {
+        $sut = $this->getSutMockWithoutConstructor();
+        $result = $this->getMethod('parseRawVhosts')->invoke($sut, $input);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function provideParseRawVhosts()
+    {
+        return [
+            'simple test' => [
+                'expected' => [],
+                'input' => '',
+            ],
+            'test with data' => [
+                'expected' => [
+                    'www.floridahospitalnetwork.com' => [
+                        '10.57.205.206:443'
+                    ],
+                ],
+                'input' => implode(PHP_EOL, [
+                    'VirtualHost configuration:',
+                    '10.57.205.206:443      is a NameVirtualHost',
+                    'default server www.floridahospitalnetwork.com (/etc/httpd/vhosts/floridahospitalnetwork.com.conf:7)',
+                    'port 443 namevhost www.floridahospitalnetwork.com (/etc/httpd/vhosts/floridahospitalnetwork.com.conf:7)',
+                ]),
+            ]
+        ];
+    }
+
+    /**
+     * @dataProvider provideGetValueByRegex
+     */
+    public function testGetValueByRegex($expected, $pattern, $input, $index = 0)
+    {
+        $sut = $this->getSutMockWithoutConstructor();
+        $result = $this->getMethod('getValueByRegex')->invoke($sut, $pattern, $input, $index);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function provideGetValueByRegex()
+    {
+        return [
+            'no regex' => [
+                'expected' => [''],
+                'pattern'  => '//',
+                'input'    => 'input value',
+                'index'    => 0,
+            ],
+
+            'word regex' => [
+                'expected' => ['input', 'value'],
+                'pattern'  => '/(\w+)/',
+                'input'    => 'input value',
+                'index'    => 0,
+            ],
+        ];
+    }
+
+        // preg_match_all($pattern, $input, $results);
+        // $results = array_values(array_unique($results[$index]));
+        // return $results;
 }
