@@ -1,7 +1,11 @@
 
 # folders
 vendor/
+tmp/
+build/*
+!build/phpunit.xml
 
 # files
 composer.lock
 .DS_Store
+cache.properties

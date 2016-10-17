@@ -9,25 +9,18 @@
 >
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>.</directory>
+            <directory>../tests</directory>
         </testsuite>
     </testsuites>
-
-    <php>
-        <server name="KERNEL_DIR" value="./app/" />
-    </php>
 
     <filter>
         <whitelist>
             <directory>../src</directory>
-            <exclude>
-                <directory>../src/*</directory>
-            </exclude>
         </whitelist>
     </filter>
 
 
-<!-- 
+
     <logging>
       <log type="coverage-html" target="./coverage" lowUpperBound="50"
            highLowerBound="85"/>
@@ -40,6 +33,6 @@
       <log type="junit" target="./logs/logfile.xml" logIncompleteSkipped="false"/>
       <log type="testdox-html" target="./logs/testdox.html"/>
       <log type="testdox-text" target="./logs/testdox.txt"/>
-    </logging> -->
+    </logging>
 
 </phpunit>
