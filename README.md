@@ -4,7 +4,7 @@
 | Branch  | Environment |                                      website | status | coverage |
 |---------|-------------|---------------------------------------------:|-------:|---------:|
 | develop | development | https://apache-status.dev.ahss.io/ | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop) | [![coverage report](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/coverage.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop)
-| master  | production  | https://www.floridahospitalneuro.com/     | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) | [![coverage report](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/coverage.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) |
+| master  | production  | TBD     | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) | [![coverage report](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/coverage.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) |
 
 
 ## Requirements
@@ -16,6 +16,8 @@ The production instance of this Drupal site uses the following technologies:
 * `php -S localhost:8000 -t web/`
 
 ## Release History
+* (tag: 1.0.2)
+    * Fixing typo in the README.
 * (tag: 1.0.1)
     * Added unit testing to the app.
 * (tag: 1.0.0)
