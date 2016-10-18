@@ -2,6 +2,14 @@
 
 namespace ServerStatus\Service;
 
+/**
+ * Class to handle reporting the status of the apache service
+ *
+ * Example usage:
+ * <?php
+ * $service = \ServerStatus\Service\Apache;
+ * $vhosts = $service->getVhosts();
+ */
 class Apache
 {
     const CMD_DUMP_VHOSTS  = 'apachectl -t -D DUMP_VHOSTS';
@@ -17,11 +25,33 @@ class Apache
     const DEFAULT_IP_ADDR = '127.0.0.1';
     const DEFAULT_PORT    = '80';
 
+    /**
+     * raw string output from dumping vhosts
+     * @var string
+     */
     protected $rawVhosts;
+
+    /**
+     * Raw string ouptput from dumping modules
+     * @var string
+     */
     protected $rawModules;
+
+    /**
+     * Raw string output from dumping the configuration for apache
+     * @var string
+     */
     protected $rawConfig;
+
+    /**
+     * Raw string output from dumping the version information for apache
+     * @var string
+     */
     protected $rawVersion;
 
+    /**
+     * Construtor
+     */
     public function __construct()
     {
         $this->initRawVersion();
