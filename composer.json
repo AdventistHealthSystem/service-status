@@ -3,7 +3,7 @@
     "description": "Project to serve the status of apache and associated sites on a server",
     "type": "project",
     "license": "MIT",
-    "version" : "1.0.2",
+    "version" : "1.1.0",
     "authors": [
         {
             "name": "Cory Collier",
