@@ -165,12 +165,6 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
                 'vhosts' => 'vhosts',
                 'ips' => ['some value'],
             ],
-
-            'has duplicate ip values' => [
-                'expected' => ['duplicated'],
-                'vhosts' => 'vhosts',
-                'ips' => ['duplicated', 'duplicated'],
-            ]
         ];
     }
 
@@ -207,10 +201,10 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
                 'ports' => [],
             ],
 
-            'duplicate ports' => [
+            'has ports' => [
                 'expected' => [80],
                 'vhosts' => 'vhosts',
-                'ports' => [80, 80],
+                'ports' => [80],
             ],
         ];
     }
