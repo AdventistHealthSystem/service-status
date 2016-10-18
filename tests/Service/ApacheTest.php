@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Service\Tests;
+namespace ServerStatus\Service\Tests;
 
-use \App\Service\Apache as Apache;
+use \ServerStatus\Service\Apache as Apache;
 
 class ApacheTest extends \PHPUnit_Framework_TestCase
 {
-    const SUT_CLASS = '\App\Service\Apache';
+    const SUT_CLASS = '\ServerStatus\Service\Apache';
 
     protected function getSutMockWithoutConstructor($methods = [])
     {
@@ -61,7 +61,7 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
 
         $sut->expects($this->once())
             ->method('runCommand')
-            ->with($this->equalTo(Apache::CMD_DUMP_VERSION))
+            ->with($this->equalTo(\ServerStatus\Service\Apache::CMD_DUMP_VERSION))
             ->will($this->returnValue($expected));
 
         $result = $this->getMethod('initRawVersion')->invoke($sut);
