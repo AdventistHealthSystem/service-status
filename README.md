@@ -1,10 +1,10 @@
 # Apache Status
 > Service to return JSON information representing the status of Apache on this server.
 
-| Branch  | Environment |                                      website | status | coverage |
-|---------|-------------|---------------------------------------------:|-------:|---------:|
-| develop | development | https://apache-status.dev.ahss.io/ | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop) | [![coverage report](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/coverage.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop)
-| master  | production  | TBD     | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) | [![coverage report](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/coverage.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) |
+| Branch  | status |
+|---------|-------:|
+| develop |[![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop) |
+| master  | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) |
 
 
 ## Requirements
@@ -13,7 +13,7 @@ The production instance of this Drupal site uses the following technologies:
 
 ## Installation
 * `composer install`
-* `php -S localhost:8000 -t web/`
+* `php -S localhost:8080 -t web/`
 
 ## Release History
 * (tag: 1.0.2)
@@ -26,4 +26,4 @@ The production instance of this Drupal site uses the following technologies:
 ## Authors
 | Author | Email |
 |--------|------:|
-| [Cory Collier](https://gitlab.floridahospital.org/u/corycollier) | <cory.collier@ahss.org> |
+| [Cory Collier](https://github.com/corycollier) | <corycollier@corycollier.com> |
