@@ -1,5 +1,5 @@
 # Service Status
-> Service to return JSON information representing the status of a service on this server.
+> Service to return JSON information representing the status services on this server.
 
 | Branch  | status | coverage |
 |---------|-------:|---------:|
@@ -7,7 +7,7 @@
 | master  | [![Build Status](https://travis-ci.org/corycollier/service-status.svg?branch=master)](https://travis-ci.org/corycollier/service-status)| [![Coverage Status](https://coveralls.io/repos/github/corycollier/service-status/badge.svg?branch=master)](https://coveralls.io/github/corycollier/service-status?branch=master) |
 
 ## Requirements
-The production instance of this Drupal site uses the following technologies:
+This library requires at least:
 * [php 5.6](https://php.net)
 
 ## Authors
