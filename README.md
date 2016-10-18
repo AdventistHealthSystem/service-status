@@ -1,10 +1,10 @@
 # Apache Status
 > Service to return JSON information representing the status of Apache on this server.
 
-| Branch  | status |
-|---------|-------:|
-| develop |[![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/develop/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/develop) |
-| master  | [![build status](https://gitlab.floridahospital.org/corycollier/apache-status/badges/master/build.svg)](https://gitlab.floridahospital.org/corycollier/apache-status/commits/master) |
+| Branch  | status | coverage |
+|---------|-------:|---------:|
+| develop |[![Build Status](https://travis-ci.org/corycollier/service-status.svg?branch=develop)](https://travis-ci.org/corycollier/service-status)| [![Coverage Status](https://coveralls.io/repos/github/corycollier/service-status/badge.svg?branch=develop)](https://coveralls.io/github/corycollier/service-status?branch=develop) |
+| master  | [![Build Status](https://travis-ci.org/corycollier/service-status.svg?branch=master)](https://travis-ci.org/corycollier/service-status)| [![Coverage Status](https://coveralls.io/repos/github/corycollier/service-status/badge.svg?branch=master)](https://coveralls.io/github/corycollier/service-status?branch=master) |
 
 
 ## Requirements

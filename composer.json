@@ -28,6 +28,7 @@
         "theseer/phpdox": "0.8.1.1",
         "sebastian/phpcpd": "^2.0",
         "pdepend/pdepend": "^2.2",
-        "phpmd/phpmd": "^2.4"
+        "phpmd/phpmd": "^2.4",
+        "satooshi/php-coveralls": "^1.0"
     }
 }
