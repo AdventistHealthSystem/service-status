@@ -15,14 +15,6 @@ The production instance of this Drupal site uses the following technologies:
 * `composer install`
 * `php -S localhost:8080 -t web/`
 
-## Release History
-* (tag: 1.0.2)
-    * Fixing typo in the README.
-* (tag: 1.0.1)
-    * Added unit testing to the app.
-* (tag: 1.0.0)
-    * First tagged release of the app.
-
 ## Authors
 | Author | Email |
 |--------|------:|
