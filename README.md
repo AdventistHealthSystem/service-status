@@ -10,6 +10,23 @@
 This library requires at least:
 * [php 5.6](https://php.net)
 
+## Usage
+If you want to check the apache virtual hosts being served:
+```php
+// Get the virtual hosts running on this server
+$apacheService = new ServerStatus\Service\Apache;
+$vhosts = $apacheService->getVhosts();
+```
+
+If you'd like to get a list of projects you have access to in Gitlab
+```php
+// Connect to Gitlab and get the projects
+$gitlabService = new ServerStatus\Service\Gitlab([
+    'private-token' => 'your-private-token-value',
+]);
+$projects = $gitlabService->getProjects();
+```
+
 ## Authors
 | Author | Email |
 |--------|------:|
