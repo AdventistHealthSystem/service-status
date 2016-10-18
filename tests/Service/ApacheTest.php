@@ -262,6 +262,93 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider provideGetModules
+     */
+    public function testGetModules($expected, $input)
+    {
+        $sut = $this->getSutMockWithConstructor([
+            'initRawVersion',
+            'initRawVhosts',
+            'initRawModules',
+            'initRawConfig',
+            'parseRawModules',
+        ]);
+
+        $sut->expects($this->once())
+            ->method('parseRawModules')
+            ->with($this->equalTo($input))
+            ->will($this->returnValue($expected));
+
+        $this->getProperty('rawModules')->setValue($sut, $input);
+
+        $result = $sut->getModules($input);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function provideGetModules()
+    {
+        return [
+            'simple test' => [
+                'expected' => [],
+                'input'    => implode(PHP_EOL, [
+                    'Loaded Modules:',
+                     ' core_module (static)',
+                     ' so_module (static)',
+                     ' http_module (static)',
+                     ' mpm_prefork_module (static)',
+                     ' authn_file_module (shared)',
+                     ' authn_core_module (shared)',
+                     ' authz_host_module (shared)',
+                ]),
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provideParseRawModules
+     */
+    public function testParseRawModules($expected, $input)
+    {
+        $sut = $this->getSutMockWithConstructor([
+            'initRawVersion',
+            'initRawVhosts',
+            'initRawModules',
+            'initRawConfig',
+        ]);
+
+        $result = $this->getMethod('parseRawModules')->invoke($sut, $input);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function provideParseRawModules()
+    {
+        return [
+            'simple test' => [
+                'expected' => [
+                    'core_module',
+                    'so_module',
+                    'http_module',
+                    'mpm_prefork_module',
+                    'authn_file_module',
+                    'authn_core_module',
+                    'authz_host_module',
+                ],
+                'input'    => implode(PHP_EOL, [
+                    'Loaded Modules:',
+                     ' core_module (static)',
+                     ' so_module (static)',
+                     ' http_module (static)',
+                     ' mpm_prefork_module (static)',
+                     ' authn_file_module (shared)',
+                     ' authn_core_module (shared)',
+                     ' authz_host_module (shared)',
+                ]),
+            ],
+        ];
+    }
+
+    /**
      * @dataProvider provideGetValueByRegex
      */
     public function testGetValueByRegex($expected, $pattern, $input, $index = 0)
