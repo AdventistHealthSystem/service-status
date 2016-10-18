@@ -1,45 +1,17 @@
 <?php
 
-namespace ServerStatus\Service\Tests;
+namespace ServerStatus\Tests\Service;
 
+use \ServerStatus\Tests\AbstractTestCase;
 use \ServerStatus\Service\Apache as Apache;
 
-class ApacheTest extends \PHPUnit_Framework_TestCase
+class ApacheTest extends AbstractTestCase
 {
     const SUT_CLASS = '\ServerStatus\Service\Apache';
 
-    protected function getSutMockWithoutConstructor($methods = [])
-    {
-        return $this->getMockBuilder(self::SUT_CLASS)
-            ->disableOriginalConstructor()
-            ->setMethods($methods)
-            ->getMock();
-    }
-
-    protected function getSutMockWithConstructor($methods = [])
-    {
-        return $this->getMockBuilder(self::SUT_CLASS)
-            ->setMethods($methods)
-            ->getMock();
-    }
-
-    protected function getMethod($method)
-    {
-        $method = new \ReflectionMethod(self::SUT_CLASS, $method);
-        $method->setAccessible(true);
-        return $method;
-    }
-
-    protected function getProperty($property)
-    {
-        $property = new \ReflectionProperty(self::SUT_CLASS, $property);
-        $property->setAccessible(true);
-        return $property;
-    }
-
     public function testConstructor()
     {
-        $sut = $this->getSutMockWithoutConstructor([
+        $sut = $this->getSutMockWithoutConstructor(self::SUT_CLASS, [
             'initRawVersion',
             'initRawVhosts',
             'initRawModules',
@@ -57,63 +29,63 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
     public function testInitRawVersion()
     {
         $expected = 'some output';
-        $sut = $this->getSutMockWithConstructor(['runCommand']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['runCommand']);
 
         $sut->expects($this->once())
             ->method('runCommand')
             ->with($this->equalTo(\ServerStatus\Service\Apache::CMD_DUMP_VERSION))
             ->will($this->returnValue($expected));
 
-        $result = $this->getMethod('initRawVersion')->invoke($sut);
+        $result = $this->getMethod(self::SUT_CLASS, 'initRawVersion')->invoke($sut);
     }
 
 
     public function testInitRawVhosts()
     {
         $expected = 'some output';
-        $sut = $this->getSutMockWithConstructor(['runCommand']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['runCommand']);
 
         $sut->expects($this->once())
             ->method('runCommand')
             ->with($this->equalTo(Apache::CMD_DUMP_VHOSTS))
             ->will($this->returnValue($expected));
 
-        $result = $this->getMethod('initRawVhosts')->invoke($sut);
+        $result = $this->getMethod(self::SUT_CLASS, 'initRawVhosts')->invoke($sut);
     }
 
     public function testInitRawModules()
     {
         $expected = 'some output';
-        $sut = $this->getSutMockWithConstructor(['runCommand']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['runCommand']);
 
         $sut->expects($this->once())
             ->method('runCommand')
             ->with($this->equalTo(Apache::CMD_DUMP_MODULES))
             ->will($this->returnValue($expected));
 
-        $result = $this->getMethod('initRawModules')->invoke($sut);
+        $result = $this->getMethod(self::SUT_CLASS, 'initRawModules')->invoke($sut);
     }
 
     public function testInitRawConfig()
     {
         $expected = 'some output';
-        $sut = $this->getSutMockWithConstructor(['runCommand']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['runCommand']);
 
         $sut->expects($this->once())
             ->method('runCommand')
             ->with($this->equalTo(Apache::CMD_DUMP_RUN_CFG))
             ->will($this->returnValue($expected));
 
-        $result = $this->getMethod('initRawConfig')->invoke($sut);
+        $result = $this->getMethod(self::SUT_CLASS, 'initRawConfig')->invoke($sut);
     }
 
     public function testGetVersion()
     {
         $expected = 'expected version';
         $version = 'raw version value';
-        $sut = $this->getSutMockWithConstructor(['getValueByRegex']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['getValueByRegex']);
 
-        $this->getProperty('rawVersion')->setValue($sut, $version);
+        $this->getProperty(self::SUT_CLASS, 'rawVersion')->setValue($sut, $version);
 
         $sut->expects($this->once())
             ->method('getValueByRegex')
@@ -134,9 +106,9 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetIps($expected, $vhosts, $ips = [])
     {
-        $sut = $this->getSutMockWithConstructor(['getValueByRegex']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['getValueByRegex']);
 
-        $this->getProperty('rawVhosts')->setValue($sut, $vhosts);
+        $this->getProperty(self::SUT_CLASS, 'rawVhosts')->setValue($sut, $vhosts);
 
         $sut->expects($this->once())
             ->method('getValueByRegex')
@@ -173,9 +145,9 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetPorts($expected, $vhosts, $ports)
     {
-        $sut = $this->getSutMockWithConstructor(['getValueByRegex']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['getValueByRegex']);
 
-        $this->getProperty('rawVhosts')->setValue($sut, $vhosts);
+        $this->getProperty(self::SUT_CLASS, 'rawVhosts')->setValue($sut, $vhosts);
 
         $sut->expects($this->once())
             ->method('getValueByRegex')
@@ -214,9 +186,9 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
         $expected = 'expected';
         $vhosts = 'the vhost value';
 
-        $sut = $this->getSutMockWithConstructor(['parseRawVhosts']);
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, ['parseRawVhosts']);
 
-        $this->getProperty('rawVhosts')->setValue($sut, $vhosts);
+        $this->getProperty(self::SUT_CLASS, 'rawVhosts')->setValue($sut, $vhosts);
 
         $sut->expects($this->once())
             ->method('parseRawVhosts')
@@ -233,8 +205,8 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseRawVhosts($expected, $input = '')
     {
-        $sut = $this->getSutMockWithoutConstructor();
-        $result = $this->getMethod('parseRawVhosts')->invoke($sut, $input);
+        $sut = $this->getSutMockWithoutConstructor(self::SUT_CLASS);
+        $result = $this->getMethod(self::SUT_CLASS, 'parseRawVhosts')->invoke($sut, $input);
         $this->assertEquals($expected, $result);
     }
 
@@ -266,7 +238,7 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetModules($expected, $input)
     {
-        $sut = $this->getSutMockWithConstructor([
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, [
             'initRawVersion',
             'initRawVhosts',
             'initRawModules',
@@ -279,7 +251,7 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($input))
             ->will($this->returnValue($expected));
 
-        $this->getProperty('rawModules')->setValue($sut, $input);
+        $this->getProperty(self::SUT_CLASS, 'rawModules')->setValue($sut, $input);
 
         $result = $sut->getModules($input);
         $this->assertEquals($expected, $result);
@@ -309,14 +281,14 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseRawModules($expected, $input)
     {
-        $sut = $this->getSutMockWithConstructor([
+        $sut = $this->getSutMockWithConstructor(self::SUT_CLASS, [
             'initRawVersion',
             'initRawVhosts',
             'initRawModules',
             'initRawConfig',
         ]);
 
-        $result = $this->getMethod('parseRawModules')->invoke($sut, $input);
+        $result = $this->getMethod(self::SUT_CLASS, 'parseRawModules')->invoke($sut, $input);
 
         $this->assertEquals($expected, $result);
     }
@@ -353,8 +325,8 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetValueByRegex($expected, $pattern, $input, $index = 0)
     {
-        $sut = $this->getSutMockWithoutConstructor();
-        $result = $this->getMethod('getValueByRegex')->invoke($sut, $pattern, $input, $index);
+        $sut = $this->getSutMockWithoutConstructor(self::SUT_CLASS);
+        $result = $this->getMethod(self::SUT_CLASS, 'getValueByRegex')->invoke($sut, $pattern, $input, $index);
         $this->assertEquals($expected, $result);
     }
 

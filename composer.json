@@ -1,7 +1,7 @@
 {
     "name": "corycollier/server-status",
-    "description": "Project to serve the status of apache and associated sites on a server",
-    "type": "project",
+    "description": "Project to serve the status of services on a server",
+    "type": "library",
     "license": "MIT",
     "version" : "2.1.0",
     "authors": [
@@ -14,11 +14,12 @@
     "prefer-stable" : true,
     "minimum-stability": "dev",
     "require": {
-        "silex/silex": "^2.0"
+        "guzzlehttp/guzzle": "^6.2"
     },
     "autoload": {
        "psr-4": {
-           "ServerStatus\\": "src/"
+           "ServerStatus\\": "src/",
+           "ServerStatus\\Tests\\" : "tests/"
        }
    },
     "require-dev": {
