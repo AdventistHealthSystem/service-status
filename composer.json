@@ -3,7 +3,7 @@
     "description": "Project to serve the status of services on a server",
     "type": "library",
     "license": "MIT",
-    "version" : "2.1.0",
+    "version" : "2.2.0",
     "authors": [
         {
             "name": "Cory Collier",
