@@ -21,6 +21,7 @@ class Apache
     const REGEX_PORT    = '/port (\d+) namevhost/';
     const REGEX_DOMAIN  = '/port \d+ namevhost (.*) \(/';
     const REGEX_VERSION = '/Apache\/([\d\.]*)/';
+    const REGEX_MODULE = '/(.*)\s\(s\w+\)/';
 
     const DEFAULT_IP_ADDR = '127.0.0.1';
     const DEFAULT_PORT    = '80';
@@ -190,6 +191,38 @@ class Apache
 
         return $results;
     }
+
+    /**
+     * Public endpoint to get module information.
+     *
+     * @return array An array of module information.
+     */
+    public function getModules()
+    {
+        return $this->parseRawModules($this->rawModules);
+    }
+
+    /**
+     * Workhorse method to actually list all of the modules loaded into apache
+     *
+     * @param  string  $input
+     *   The output of apachectl.
+     *
+     * @return array
+     *   An array of modules
+     */
+    protected function parseRawModules($input)
+    {
+        $results = [];
+        $lines = explode(PHP_EOL, $input);
+        foreach ($lines as $line) {
+            if (preg_match(self::REGEX_MODULE, $line, $matches)) {
+                $results[] = trim($matches[1]);
+            }
+        }
+        return $results;
+    }
+
 
     /**
      * Utility method to encapsulate calls to preg_match_all.
