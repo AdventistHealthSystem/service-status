@@ -30,6 +30,9 @@ class Apache
         $this->initRawConfig();
     }
 
+    /**
+     * Initializes the raw version information
+     */
     protected function initRawVersion()
     {
         if (! $this->rawVersion) {
@@ -90,7 +93,7 @@ class Apache
         if (!count($ips)) {
             $ips = ['127.0.0.1'];
         }
-        return array_values(array_unique($ips));
+        return $ips;
     }
 
     /**
@@ -102,7 +105,7 @@ class Apache
     public function getPorts()
     {
         $ports = $this->getValueByRegex(self::REGEX_PORT, $this->rawVhosts, 1);
-        return array_values(array_unique($ports));
+        return $ports;
     }
 
     /**

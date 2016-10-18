@@ -1,5 +1,5 @@
 {
-    "name": "corycollier/apache-status",
+    "name": "corycollier/server-status",
     "description": "Project to serve the status of apache and associated sites on a server",
     "type": "project",
     "license": "MIT",
@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Cory Collier",
-            "email": "cory.collier@ahss.org",
+            "email": "corycollier@corycollier.com",
             "role" : "Lead Developer"
         }
     ],

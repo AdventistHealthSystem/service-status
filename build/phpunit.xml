@@ -25,7 +25,7 @@
       <log type="coverage-html" target="./coverage" lowUpperBound="50"
            highLowerBound="85"/>
       <log type="coverage-xml" target="./logs/coverage/xml"/>
-      <log type="coverage-clover" target="./logs/coverage.xml"/>
+      <log type="coverage-clover" target="./logs/clover.xml"/>
       <log type="coverage-php" target="./logs/coverage.serialized"/>
       <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
       <log type="json" target="./logs/logfile.json"/>
