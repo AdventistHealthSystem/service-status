@@ -4,6 +4,8 @@ vendor/
 tmp/
 build/*
 !build/phpunit.xml
+!build/phpmd.xml
+!build/phpdox.xml
 
 # files
 composer.lock
