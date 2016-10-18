@@ -289,8 +289,4 @@ class ApacheTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
-
-        // preg_match_all($pattern, $input, $results);
-        // $results = array_values(array_unique($results[$index]));
-        // return $results;
 }
